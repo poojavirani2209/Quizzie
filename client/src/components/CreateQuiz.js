@@ -6,6 +6,8 @@ function CreateQuiz() {
   const [title, setTitle] = useState("");
   const [selectedQuestions, setSelectedQuestions] = useState([]);
   const [allQuestions, setAllQuestions] = useState([]);
+  const [error, setError] = useState(undefined);
+
   const navigate = useNavigate();
 
   // Fetch all existing questions from the API
@@ -13,8 +15,12 @@ function CreateQuiz() {
     getQuestions()
       .then((response) => {
         setAllQuestions(response.data);
+        setError(undefined);
       })
       .catch((error) => {
+        setError(
+          `Error fetching questions. Retry after ensuring user it logged in or the server is up.`
+        );
         console.error("Error fetching questions:", error);
       });
   }, []);
@@ -29,7 +35,9 @@ function CreateQuiz() {
       const response = await createQuiz(newQuiz);
       console.log("Quiz created:", response.data);
       navigate("/quizlist"); // Redirect to admin home page after quiz creation
+      setError(undefined);
     } catch (error) {
+      setError(`Error occurred while creating quiz`);
       console.error("Error creating quiz:", error);
     }
   };
@@ -72,12 +80,19 @@ function CreateQuiz() {
           ))}
         </select>
         <br />
-        <button style={{ margin: "5px" }} type="submit">Create Quiz</button>
+        <button style={{ margin: "5px" }} type="submit">
+          Create Quiz
+        </button>
         <br />
-        <button  style={{ margin: "5px" }}type="button" onClick={handleAddQuestion}>
+        <button
+          style={{ margin: "5px" }}
+          type="button"
+          onClick={handleAddQuestion}
+        >
           Create Question
         </button>
       </form>
+      {error && <p>{error}</p>}
     </div>
   );
 }

@@ -9,13 +9,18 @@ export function Register() {
   const navigate = useNavigate();
   const location = useLocation();
   const role = location.pathname.includes("admin") ? "admin" : "learner";
+  const [error, setError] = useState(undefined);
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
       await register(username, password, role);
+      setError(undefined);
       navigate("/login");
     } catch (error) {
+      setError(
+        `Error registering user. Retry after ensuring all details are provided or server is up.`
+      );
       console.error("Error registering", error);
     }
   };
@@ -34,7 +39,10 @@ export function Register() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button style={{ margin: "5px" }} type="submit">Register</button>
+      <button style={{ margin: "5px" }} type="submit">
+        Register
+      </button>
+      {error && <p>{error}</p>}
     </form>
   );
 }

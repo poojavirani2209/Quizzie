@@ -8,13 +8,18 @@ function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const role = location.pathname.includes("admin") ? "admin" : "learner";
+  const [error, setError] = useState(undefined);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await login(username, password, role);
+      setError(undefined);
       navigate("/quizlist");
     } catch (error) {
+      setError(
+        `Error loggin in user. Retry after ensuring details are correct or server is up`
+      );
       console.error("Error logging in", error);
     }
   };
@@ -34,7 +39,10 @@ function Login() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button style={{ margin: "5px" }} type="submit">Login</button>
+      <button style={{ margin: "5px" }} type="submit">
+        Login
+      </button>
+      {error && <p>{error}</p>}
     </form>
   );
 }

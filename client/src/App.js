@@ -4,14 +4,13 @@ import Login from "./components/Login";
 import QuizList from "./components/QuizList";
 import PrivateRoute from "./components/Privateroute.js";
 import CreateQuiz from "./components/CreateQuiz";
-import { getCurrentUserData } from "./services/authService";
 import Home from "./components/Home.js";
 import Register from "./components/Register.js";
 import CreateQuestion from "./components/CreateQuestion.js";
 import QuizPage from "./components/QuizPage.js";
 
 function App() {
-  const user = getCurrentUserData();
+  localStorage.removeItem("user");
 
   return (
     <Router>

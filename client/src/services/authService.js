@@ -15,7 +15,7 @@ export const login = (username, password) => {
 
 /** Function to create a new user based on role(learner, admin)*/
 export const register = (username, password, role) => {
-  if (role != "admin") {
+  if (role !== "admin") {
     return axios.post(`${AUTH_URL}/register`, { username, password });
   }
   return axios.post(`${AUTH_URL}${role}/register`, { username, password });

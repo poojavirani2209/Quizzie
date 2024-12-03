@@ -6,6 +6,7 @@ function CreateQuestion() {
   const [questionText, setQuestionText] = useState("");
   const [options, setOptions] = useState(["", "", "", ""]);
   const [correctOption, setCorrectOption] = useState(0);
+  const [error, setError] = useState(undefined);
   const navigate = useNavigate();
 
   const handleOptionChange = (index, value) => {
@@ -23,8 +24,12 @@ function CreateQuestion() {
     };
     try {
       await createQuestion(newQuestion);
+      setError(undefined);
       navigate("/admin/create-quiz"); // Redirect back to the create quiz page after question creation
     } catch (error) {
+      setError(
+        `Error occurred while creating question. Retry after ensuring server is up or user is logged in`
+      );
       console.error("Error creating question:", error);
     }
   };
@@ -66,6 +71,7 @@ function CreateQuestion() {
         <button style={{ margin: "5px" }} type="submit">
           Create Question
         </button>
+        {error && <p>{error}</p>}
       </form>
     </div>
   );

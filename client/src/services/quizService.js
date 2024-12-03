@@ -8,7 +8,7 @@ const RESULT_API_URL = "http://localhost:8887/result";
 export const getQuizzes = () => {
   return axios.get(`${QUIZ_API_URL}`, {
     headers: {
-      Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`, // Attach the token to the Authorization header
+      Authorization: `Bearer  ${getAuthToken()}`, // Attach the token to the Authorization header
     },
   });
 };
@@ -16,7 +16,7 @@ export const getQuizzes = () => {
 export const getQuestions = () => {
   return axios.get(`${QUESTION_API_URL}`, {
     headers: {
-      Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`, // Attach the token to the Authorization header
+      Authorization: `Bearer  ${getAuthToken()}`, // Attach the token to the Authorization header
     },
   });
 };
@@ -24,7 +24,7 @@ export const getQuestions = () => {
 export const getQuizById = (quizId) => {
   return axios.get(`${QUIZ_API_URL}/${quizId}`, {
     headers: {
-      Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`, // Attach the token to the Authorization header
+      Authorization: `Bearer ${getAuthToken()}}`, // Attach the token to the Authorization header
     },
   });
 };

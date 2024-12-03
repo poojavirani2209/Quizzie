@@ -13,8 +13,9 @@ const SECRET_KEY = "SecretKey";
  */
 export async function verifyToken(request, response, next) {
   const token = request.headers["authorization"]?.replace("Bearer ", "");
+  console.log(token)
 
-  if (!token) {
+  if (!token || token =="null" || token =="undefined") {
     return response
       .status(401)
       .json({ message: "Access is denied. Please provide a token" });
@@ -23,6 +24,7 @@ export async function verifyToken(request, response, next) {
   try {
     //The JWT has user details, which help to authorize and for userId in further operations.
     const user = jwt.decode(token, SECRET_KEY);
+    console.log(user);
     request.body.user = user;
     next();
   } catch (error) {
