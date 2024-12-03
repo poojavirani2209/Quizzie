@@ -68,12 +68,6 @@ git clone https://github.com/poojavirani2209/Quizzie
 ```bash
   cd Quizzie
 ```
-### Clone the project
-
-```bash
-git clone https://github.com/poojavirani2209/Quizzie
-```
-
 ### Run with docker
 
 ```bash
