@@ -24,7 +24,7 @@ export const getQuestions = () => {
 export const getQuizById = (quizId) => {
   return axios.get(`${QUIZ_API_URL}/${quizId}`, {
     headers: {
-      Authorization: `Bearer ${getAuthToken()}}`, // Attach the token to the Authorization header
+      Authorization: `Bearer ${getAuthToken()}`, // Attach the token to the Authorization header
     },
   });
 };

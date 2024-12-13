@@ -36,6 +36,7 @@ export async function authenticate(username: string, password: string) {
       }
 
       const token = generateToken(user); //generates JWT which has userdetails when decoded.
+      console.log("Created",token)
       res({ token, role: user.role_id });
     } catch (error: any) {
       console.log(`Error occurred while authrnticating user:${error}`);

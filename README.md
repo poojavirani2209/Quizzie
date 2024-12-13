@@ -78,6 +78,11 @@ git clone https://github.com/poojavirani2209/Quizzie
 
 - [@PoojaVirani](https://github.com/poojavirani2209)
 
+## LOOM LINKS
+
+https://www.loom.com/share/28aaa858084545a1981af21ff995d472 - for setup and communicating with endpoints in postman collection
+https://www.loom.com/share/158213cc51f5476fb4b201cd6d7b3b3f - for react client
+
 # Quiz Application API Guide
 
 This application uses Role-Based Access Control (RBAC) and JSON Web Tokens (JWT) for authorization. You need to register and log in to perform any operations. Below is the detailed guide for using the API.

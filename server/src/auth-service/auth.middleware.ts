@@ -12,7 +12,7 @@ const SECRET_KEY = "SecretKey";
  * The token is obtained from the authorization header, which is required in the request.
  */
 export async function verifyToken(request, response, next) {
-  const token = request.headers["authorization"]?.replace("Bearer ", "");
+  const token = request.headers["authorization"]?.replace("Bearer ", "").trim();
   console.log(token)
 
   if (!token || token =="null" || token =="undefined") {
